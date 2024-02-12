@@ -1,0 +1,128 @@
+Kubernetes
+----------
+
+To create role
+--------------
+
+goto https://eu-north-1.console.aws.amazon.com/ec2/home?
+
+search for IAM (Open the IAM console at https://console.aws.amazon.com/iam/.)
+
+Choose Roles, then Create role.
+
+Under Trusted entity type, select AWS service.
+
+From the Use cases for other AWS services dropdown list, choose EKS.
+
+Choose EKS - Cluster for your use case, and then choose Next.
+
+On the Add permissions tab, choose Next.
+
+For Role name, enter a unique name for your role, such as eksClusterRole.
+
+For Description, enter descriptive text such as Amazon EKS - Cluster role.
+
+Choose Create role.
+
+To create cluster
+-----------------
+goto https://eu-north-1.console.aws.amazon.com/ec2/home?
+
+search for EKS(Elastic Kubernetes Service)
+
+Click on Add Cluster->create
+
+give the name ex-test, version 1.27, Cluster service role select the role created above
+
+click Next
+
+select the default VPC, select all the subnets, security group not required, cluster Ip - IPv4, cluster end point access-public
+
+Next,Next, AddOns select all except Amazon guards duty
+
+Click Next and create..
+
+Note:- Terminate the role after use..
+
+----------------------------------
+
+
+IAM>>Roles>>CREATE ROLE>>ADDNODEGROUP
+EKS>>CLUSTER
+
+
+
+
+ARCH=amd64
+
+PLATFORM=$(uname -s)_$ARCH
+
+curl -sLO "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+
+ 
+
+sudo mv /tmp/eksctl /usr/bin
+
+
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+chmod +x kubectl
+
+sudo mv kubectl /usr/bin/kubectl
+
+sudo apt install unzip
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install --bin-dir /usr/bin --install-dir /usr/local/aws-cli --update
+
+
+aws configure
+
+AKIAWS2ZE5YLHPY22XUK
+Q5GezLUW/kip7OFmzlg7jJq81umaVqosUXj2B+Rc
+eu-north-1
+not required
+
+
+
+
+
+
+aws eks update-kubeconfig --name Test --region eu-north-1
+
+kubectl get no	-->for nodes
+
+kubectl run nginx-deployment --image=nginx --port=80
+
+kubectl get po  -->for pods
+
+
+kubectl get pods --all-namespaces
+
+vim nginx.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+			
+kubectl apply -f nginx.yaml

@@ -1,0 +1,163 @@
+What is Cloud Computing
+The term cloud refers to a network or the internet. It is a technology that uses remote servers on the internet to store, manage, and access data online rather than local drives. The data can be anything such as files, images, documents, audio, video, and more.
+
+There are the following operations that we can do using cloud computing:
+
+Developing new applications and services
+Storage, back up, and recovery of data
+Hosting blogs and websites
+Delivery of software on demand
+Analysis of data
+Streaming videos and audios
+
+Why Cloud Computing?
+Small as well as large IT companies, follow the traditional methods to provide the IT infrastructure. That means for any IT company, we need a Server Room that is the basic need of IT companies.
+
+In that server room, there should be a database server, mail server, networking, firewalls, routers, modem, switches, QPS (Query Per Second means how much queries or load will be handled by the server), configurable system, high net speed, and the maintenance engineers.
+
+To establish such IT infrastructure, we need to spend lots of money. To overcome all these problems and to reduce the IT infrastructure cost, Cloud Computing comes into existence.
+
+Characteristics of Cloud Computing
+The characteristics of cloud computing are given below:
+
+1) Agility
+
+The cloud works in a distributed computing environment. It shares resources among users and works very fast.
+
+2) High availability and reliability
+
+The availability of servers is high and more reliable because the chances of infrastructure failure are minimum.
+
+3) High Scalability
+
+Cloud offers "on-demand" provisioning of resources on a large scale, without having engineers for peak loads.
+
+4) Multi-Sharing
+
+With the help of cloud computing, multiple users and applications can work more efficiently with cost reductions by sharing common infrastructure.
+
+5) Device and Location Independence
+
+Cloud computing enables the users to access systems using a web browser regardless of their location or what device they use e.g. PC, mobile phone, etc. As infrastructure is off-site (typically provided by a third-party) and accessed via the Internet, users can connect from anywhere.
+
+6) Maintenance
+
+Maintenance of cloud computing applications is easier, since they do not need to be installed on each user's computer and can be accessed from different places. So, it reduces the cost also.
+
+7) Low Cost
+
+By using cloud computing, the cost will be reduced because to take the services of cloud computing, IT company need not to set its own infrastructure and pay-as-per usage of resources.
+
+8) Services in the pay-per-use mode
+
+Application Programming Interfaces (APIs) are provided to the users so that they can access services on the cloud by using these APIs and pay the charges as per the usage of services.
+
+
+
+
+
+
+
+morning
+thanvitha acct 2 - 14850/-
+thanvitha acct 1 - 19710/-
+
+   54646d780142e50bb7d104a5f47122b630a81388
+       2a111db0b84e551db2b486a441cdff2e
+   d3895504a9c282e3b9033e4155fb9f7cde42aa9d;
+
+
+54,182/-
+
+now
+thanvitha acct 2 - 12,150
+thanvitha acct 1 - 18,360
+
+now
+16,200-1350 = 14,850/-
+21,240-1530 = 19,710/-
+		  =======
+		  34,560/-
+              ========
+
+54k
+2k
+
+
+30k home--done  
+26k remaining 
+18k cred --done
+8k remaining
+===========
+thanvitha - 34,560/-
+hdfc -13,091
+fibe -10,522
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://13.51.195.203:8080/
+
+
+sudo apt update
+sudo apt install openjdk-11-jre
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+
+
+Payables
+---------
+Flipkart - 2693/-
+fibe -10,522/-
+suman - 35k
+
+Receivables
+-----------
+Thanvitha - 
+1350*15 = 20,250/-
+1530*15 = 22,950/-
+total = 43,200/-
+Mara - 10k
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

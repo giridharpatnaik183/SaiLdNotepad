@@ -1,0 +1,181 @@
+git init: Initializes a new Git repository in the current directory.
+
+git clone <repository>: Creates a local copy of a remote repository.
+
+git add <file>: Adds a file or changes to the staging area (index) to be committed.
+
+git status: Shows the current status of your Git repository, including any untracked, modified, or staged files.
+
+git commit -m "Commit message": Commits the staged changes to the repository with a descriptive message.
+
+git push: Pushes the committed changes to a remote repository.
+
+git pull: Fetches and merges changes from a remote repository into the current branch.
+
+git branch: Lists all branches in the repository.
+
+git branch <branch-name>: Creates a new branch.
+
+git checkout <branch-name>: Switches to the specified branch.
+
+git merge <branch-name>: Merges changes from the specified branch into the current branch.
+
+git log: Displays the commit history of the repository.
+
+git remote: Lists the remote repositories associated with the local repository.
+
+git remote add <remote-name> <remote-url>: Adds a new remote repository.
+
+git remote remove <remote-name>: Removes a remote repository.
+
+git diff: Shows the differences between the working directory and the staging area.
+
+git reset <file>: Unstages a file, removing it from the staging area.
+
+git checkout -- <file>: Discards changes in a file and reverts it to the last committed version.
+
+git stash: Temporarily saves changes that are not ready to be committed.
+
+git tag: Lists all tags in the repository.
+
+git tag <tag-name>: Creates a new tag at the current commit.
+
+------------================Git Branching Strategy==============------------------
+
+git clone github repo link
+
+There are 3 stages in Git
+Modified --any modification made in the file goes to modified stage by using command [ Git add filename ], 
+			u can check by command [ Git status ].
+Stagged --In order to bring the file from modified to Stagged use command git add filename, u can check by command git status.
+			[ Git restore --staged filename ] -> to get back to modified stage.
+			[ Git restore filename ] -> to revert all the modification and go to clean start.
+Commited --to commit the changes use command [ Git commit -m "any message" ]
+
+Git remote -v ->
+Git push origin main -> will push all the commited changes to the git hub.
+
+git log --oneline --decorate
+git branch devops ->to create a new branch named devops
+git checkout devops ->to change the branch from main to devops
+git add
+git commit -m "first commit in devops branch"
+git push origin devops
+
+Inorder to merge we need to first go to master/main branch
+
+git checout master/main ->to enter into main branch
+git merge devops ->use this command inside the main branch inorder to merge the changes made in devops branch
+git push origin main ->to push the changes into github.
+
+git branch -d branchName -> to delete a branch.
+git reset --hard ->to go back to last commit.
+
+------------================Git Tagging Strategy==============------------------
+
+This is usually done to mark release points.
+Step1: Checkout to the branch where you want to create the tag
+		command:git checkout <branchname>
+		
+Step2: Create tag with some name
+		command:git tag <tagname> ex: git tag v1.0
+		command git tag -a v1.1 -m "message" ->To create annotated tag
+		
+Step-3: Display or show tags
+		command:git tag
+		command:git show
+		command:git tag -l "v1.*"
+		
+Step-4: Push tags to remote/GIT HUB
+		command:git push origin v1.0
+		command:git push origin --tags or git push --tags -->to push all the tags at once
+		
+Step-5: To delete tags (from local)
+		command:git tag -d v1.0
+		command:git tag --delete v1.0
+		To delete tags (from remote)
+		command:git push origin -d v1.0
+		command:git push origin --delete v1.0
+		command:git push origin v1.0
+		
+To create a branch from the tag and checkout the branch
+git checkout -b <branchName> <tag-name>
+
+To create a tag from past commit
+git tag <tag-name> <reference of the commit>		
+		
+		
+------============Git stash==========---------
+Git stash will store the uncommited changes to a hidden space
+
+Git stash
+Git stash -m "message"
+Git stash list ->will list out all the stash files
+git stash apply ->will apply the latest stash
+git stash apply stash@{2} ->to apply specific stash
+git stash pop -> this will delete the lastest stash added 
+git stash drop stash@{2} ->to drop specific stash
+git stash clear ->will clear all the stash
+git stash -m "giri"
+git stash branch "giri" stash@{0} ->to create a stash branch
+
+
+-------------===============Git continuation==========------------------
+Scenario where you have 4 commits and you want to merge all into a single commit
+we can use rebase command.
+How to use rebase command ?
+Create 5 files and commit it
+touch 1
+git add .;git commit -m "1"
+touch 2
+git add .;git commit -m "2"
+touch 3
+git add .;git commit -m "3"
+touch 4
+git add .;git commit -m "4"
+touch 5
+git add .;git commit -m "5"
+
+git log if u do u can see 5 commits
+copy the log 1 commit address and use in the command below
+git rebase -i 34b91bb10be434b6172a362c3328589960e3138e
+
+Now you have 4 pick's you can pick or squash
+
+If you pick the 1st you can squash the others.
+squash means which ever is listed as pick,merge it into previous commit.
+
+when u use rebase command this is what it shows
+
+pick 9b5437a 1
+pick b650cbc 2
+pick f15c9fb 3
+pick e17e86e 4
+pick f8cc80f 5
+
+so i have picked the 1st and squashed the others
+
+pick 9b5437a 1
+squash b650cbc 2
+squash f15c9fb 3
+squash e17e86e 4
+squash f8cc80f 5
+
+and have given message as commits merged.
+
+
+
+Merge Conflicts
+----- ---------
+
+
+
+
+
+
+
+
+
+
+
+

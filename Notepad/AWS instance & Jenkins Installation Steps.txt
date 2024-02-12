@@ -1,0 +1,168 @@
+Steps from creating an Instance in AWS to Jenkins and Nginx Installation
+========================================================================
+To create an Instance in AWS
+
+Create an free account in AWS 
+
+Goto -->  https://aws.amazon.com/
+
+Create an AWS Account
+
+After creating account serach for EC2
+
+create a instance
+
+To create an Instance goto Instances and click on launch Instances
+
+	-> give a name
+	-> select ubuntu
+	-> select Architecture as 64-bit(x86)
+	-> Instance type t3.micro
+	-> click on Create new key-pair 
+	-> give a key pair name and give key pair type as RSA and private key file format as .pem and click on create key-pair
+	-> A key pair file i.e .pem file gets downloaded 
+	-> keep the network settings same as Firewall security group and tick on allow ssh traffic from Anywhere
+	-> click on launch Instance 
+	Instance is successfully created, select the created instance and you will get all the details of the instance there.
+	
+Configure the instance with MobaXterm
+
+	-> click on session (to create new session)
+	-> click om SSH give the remote host (public ip from the above instance created)
+	-> Check on Specify username and give the username as ubuntu
+	-> Click on Advanced SSH settings 
+	-> Check on Use private key and upload the .pem file downloaded earlier and click on ok.
+	
+Jenkins Installation steps
+
+	-> sudo apt update (to update the package lists for available software packages from the repositories configured on your system.)
+	-> sudo apt install openjdk-11-jre  (To install jdk in env)
+	-> sudo apt-get update
+	-> sudo apt-get install jenkins
+	-> service jenkins status ( To check the status of jenkins)
+	
+To open jenkins 
+
+	-> copy the public ip from the instance created
+	-> goto browser and paste with :8080 ex 13.48.132.18:8080
+	-> If account is not created create a new account install required plugins
+	-> If already created give the credentials and use jenkins
+	
+To create new user and give only read access
+	
+	-> goto Manage Jenkins
+	-> click on Users and create a user
+	-> go to security 
+	-> In Authorization select Matrix-based security
+	-> Click on Add user and give the id name 
+	-> select all the Read,view,build,workspace and click on Apply.
+
+To execute all the commands from remote machines
+
+	-> goto manage jenkins -> plugins -> available plugins -> ssh install and restart
+	-> To add credentials Manage Jenkins -> Credentials -> System -> Global credentials -> add credentials and 
+	-> In kind select SSH username with private key, remote id and desc give anytghing and Username is ubuntu and
+	-> check on Private key enter direrctly paste the .pem file content here and click on create.
+	-> To add hosts goto manage jenkins -> System -> search SSH remoter host 
+	-> Hostname (give private ip) -> port - 22 -> credentials - ubuntu -> check PTY -> ServerAliveIntervals 5000 ->timeout 5000
+	-> Check connection if it's connected only then save.
+	
+Execute shell script on remote host using ssh
+
+	->In the dashboard select existing item or create new item
+	-> for existing item click on configure
+	-> In the build Steps select 'Execute shell script on remote host using ssh'
+	-> give the command like sudo apt install nginx -y
+	-> save and build now.
+
+	=============================================================================================
+	Incase if the above doesn't work try this select 1 paragraph and run at a time
+	
+sudo apt update
+sudo apt install openjdk-11-jre
+sudo apt update
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+sudo apt update
+
+---=========================================================================
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+
+sudo update-alternatives --config editor
+sudo visudo
+jenkins ALL=(ALL) NOPASSWD: ALL
+sudo apt install nginx -y
+
+sudo apt update
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt-get update
+sudo apt install ansible -y
+	
+	
+	
+-----============Jenkins Continuation==========--------------------
+
+what is jenkins pipeline ?
+usually we create jenkins jobs manually by choosing "new item" in our jenkins console 
+and provide our steps like cloning the repository, building the code, deploying it into a targeting environment.
+These steps we are going to provide in the jenkins job itself.
+Rather than providing that into a jenkins job,we can create or convert that into a jenkins file and we will
+pass that file into a jenkins job. so, it reads our jenkins file and act accordingly to the steps given in jenkins file.
+
+How to create a Jenkins pipeline ?
+
+Jenkins pipeline can be created by 2 ways
+1.Declarative pipeline	2.scripted pipeline
+latest one					old one
+simple way to write			needs groovy scripting knowledge
+					
+pipeline syntax
+---------------
+Declarative pipeline 		
+--------------------						
+pipeline{ 		<--Top level						
+agent any		<--where to build 			
+stages{			<--where work happens			
+stage("build"){ <--what to do
+steps{
+}}}}
+		
+scripted pipeline		
+-----------------			
+node{							
+stage(){
+//groovy script	
+}}	
+
+Jenkins -> manage jenkins ->  plugins -> available plugins -> pipeline -> install without restart
+
+
+new item
+pipeline
+script
+
+pipeline{
+    agent any
+    stages{
+        stage("Hello"){
+            steps{
+                echo "Welcome to Jenkins pipeline"
+            }
+        }
+    }
+}
+
+Build now.

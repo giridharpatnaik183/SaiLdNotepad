@@ -1,0 +1,254 @@
+Ansible
+=======
+
+		--===we use two Instances===--
+1.Local  (host)      				
+Install Ansible on local.			
+vim key								
+paste the .pem key of remote here.	
+chmod 400 key
+ssh-keygen -t rsa  -->4 times enter
+cat /home/ubuntu/.ssh/id_rsa.pub
+paste the keygen key in the remote instances
+vi .ssh/authorized_keys vi
+ssh ubuntu@remote host's ip
+
+to access without key
+In local give command                
+ssh-keygen -t rsa 4times ENTER
+cat /home/ubuntu/.ssh/id_rsa.pub ->  In remote goto path cd .ssh/ vi authorized_keys and paste the local's key here
+come back to local and give command
+ssh ubuntu@remote's ip
+
+vim hosts
+paste the remote key here
+and run the command
+ssh ip-remotehostip
+
+ansible all -m ping -i hosts
+
+Steps to write a playbook
+-------------------------
+mkdir ansible_playbooks
+vim apache2_install.yaml
+---
+- hosts: webservers
+  tasks:
+  - name:  apache2 install
+    apt: name=apache2 state=present
+
+save and exit
+command: ansible-playbook apache2_install.yaml -i hosts -b
+
+cp ../hosts .  ->copying hosts file to ansible folder
+
+create a grouping in hosts
+i.e vi hosts 
+write 1st line as [webservers]
+
+
+-----------------------------------------------------------------------------------
+
+sudo apt-get update
+
+sudo apt-get install software-properties-common -y
+
+sudo apt-add-repository ppa:ansible/ansible -y
+
+sudo apt-get update
+
+sudo apt-get install ansible -y
+
+
+vim key - paste the ansible's/local's pem key
+paste the key
+chmod 400 key
+ssh ubuntu@ansible/local host's ip
+ssh -i key ubuntu@remote host's ip
+hostname -i
+
+
+to connect without key
+goto remote host and type 
+
+ssh-keygen -t rsa  -->4 times enter
+
+
+
+
+cat /home/ubuntu/.ssh/id_rsa.pub
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfVGg6toLK0VlsKCeEupOKR/GnmEum+lmX/K8QMz9INUtBUVsJ/4e/uUzcP2xvI4ZekhRtdC61h4zxi3xTZo+M5i7+FpV5z9ZgPWu25MvCO3DYGUNE5pI3NpseKtAc+84MCpifGr8FxbUg15DAy3TJx6TXpjZ+NgbrdgyTVdKO1Gx5eA1GNE8INilQ4LQoHTR5BP8gxR/hxp6W31lfxF9kZTGZ9JuadJRoQHf3vZ5CMdXwSYo0mrEhx1dStBoPYFSTso6tR3UYVSDx6vrtNdIncQ9CDyc47lbNBluYTpG+ykI4HXdxhZOfWeS8ttAoqONQ6qh1Ghnxxz+LFAz0E5AhHAxjOKYQ19FzijicdNL76xhXHriAzRLPI8pe5+HdcxhypRsz2eoUUf2t7n7pKv17Pr+aoTqv9oFaS0KvuxqeCjGzpW7bSIC/+eGUbez+b6Qx8LsDVpNoqg7QiqdAd7uiu4GbwRWn7Kja/L/hc+nwtG37l37MvEjeE3dAUdrxOA8= ubuntu@ip-172-31-45-94
+
+
+
+copy the pub key to all agent
+
+cd .ssh
+
+ vi authorized_keys  //paste pub key
+ 
+ exit 
+ 
+ ssh ubuntu@ansibleip -check wether it is connecting to ansible host or not
+ 
+ exit
+ 
+ vim hosts (copy the ansible ip and paste here) ex ip-172-31-39-246
+ 
+ To go to Remote host from primary host
+ssh -i key ubuntu@public-ip-of-remote
+ ssh ip ENTER (ex ssh ip-172-31-39-246)
+ 
+ exit from ansible and type (ansible all -m ping)
+ 
+ 
+  ansible all -m ping -i hosts
+ ssh ip-172-31-39-246
+ ansible all -m apt -a "name=apache2 state=latest" -i hosts -b
+ service apache2 status
+ ansible all -m apt -a "name=nginx state=latest" -i hosts -b 
+ service nginx status
+ ansible all -m apt -a "name=nginx state=absent" -i hosts -b 
+ 
+ ansible all -m apt -a "name=apache2 state=absent" -i hosts -b
+
+
+ansible all -m apt -a "name=apache2 state=present" -i hosts  -b  --private-key <private_key_file>
+
+ansible all -m copy -a "src=key dest=/tmp" -i hosts  -> to copy from vm1 to vm2 where src = file name dest = dest path
+
+---
+- hosts: webservers
+  tasks:
+  - name:  apache2 install
+    apt: name=apache2 state=present
+	
+	[webservers] ->grouping
+	
+--------=====================================================================================------
+What is ansible and its use ?
+Ansible is an open-source automation tool that simplifies the management and configuration of computer systems. 
+It allows you to automate repetitive tasks, streamline complex deployments, and enforce consistency across multiple machines. 
+In layman's terms, Ansible can be thought of as a way to control and manage a group of computers or servers using a single, 
+easy-to-understand language.
+
+Here's a simple explanation of how Ansible works:
+
+Imagine you have multiple computers or servers that need to be set up or configured in a specific way. 
+Without Ansible, you would have to manually log in to each machine, run commands, copy files, and make changes individually. 
+This process can be time-consuming, error-prone, and difficult to scale.
+
+With Ansible, you define the desired state of your machines in a simple, human-readable language called YAML. 
+This definition is called a playbook. A playbook describes the tasks that need to be performed on each machine 
+to achieve the desired state.
+
+Ansible uses SSH (Secure Shell) protocol to connect to the machines and executes the tasks defined in the playbook remotely. 
+It doesn't require any additional software to be installed on the managed machines, as it communicates with them through 
+standard SSH and Python.
+
+Ansible allows you to automate various tasks, such as:
+
+Configuration management: Installing software packages, managing configuration files, and ensuring consistent 
+						  settings across multiple machines.
+
+Application deployment: Deploying applications to multiple servers, starting or stopping services, 
+						and managing the application lifecycle.
+
+Provisioning: Creating and managing cloud instances or virtual machines on platforms like AWS, Azure, or VMware.
+
+Continuous Delivery: Orchestrating and automating the entire software delivery pipeline, including building, 
+					 testing, and deploying applications.
+
+One of the key benefits of Ansible is its simplicity. You don't need to have extensive programming knowledge to use Ansible 
+effectively. It employs a declarative approach, where you define the desired state of your infrastructure, and Ansible 
+takes care of figuring out the necessary steps to reach that state.
+
+In summary, Ansible is a powerful automation tool that allows you to manage and configure multiple machines efficiently, 
+saving time and reducing manual effort. It brings simplicity, consistency, and scalability to IT operations and is widely 
+used in DevOps, system administration, and infrastructure management.
+
+
+
+----------------------------follow the below if confused------------------------------------
+
+
+
+Ansible
+
+ 
+
+
+sudo apt purge/remove ansible -y  (delete application might not delete some file)
+sudo apt purge ansible -y      (Uninstall a application)
+
+ 
+
+sudo apt-get update
+
+ 
+
+
+sudo apt-get install software-properties-common -y =
+(Advanced Package Tool, or APT, is a free software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu and other Linux distributions. APT simplifies the process of managing software on Unix-like computer systems by automating the retrieval, configuration and installation of software packages, either from precompiled files or by compiling source code.
+
+ 
+
+apt-get is the command-line tool for handling packages, and may be considered the user's "back-end" to other tools using the APT library.
+
+ 
+
+apt-get install is followed by one or more packages desired for installation or upgrading. Each package is a package name, not a fully qualified filename. All packages required by the package(s) specified for installation will also be retrieved and installed. The /etc/apt/sources.list file is used to locate the desired packages. If a hyphen is appended to the package name (with no intervening space), the identified package will be removed if it is installed. Similarly a plus sign can be used to designate a package to install. These latter features may be used to override decisions made by apt-get's conflict resolution system.)
+
+ 
+
+ 
+
+sudo apt-add-repository ppa:ansible/ansible -y   (add new repository for ansible under apt )
+sudo apt-get update
+sudo apt install ansible -y  = (install insible in local)
+
+ 
+
+
+To go to Remote host from primary host
+ssh -i key ubuntu@public-ip-of-remote
+
+ 
+
+On Remote-Host hit below command 
+ssh-keygen -t rsa (it will generate a new key) 
+cat /home/ubuntu/.ssh/id_rsa.pub (you can see one public key is generated for this remote host copy the pub key to all agent)
+On your Primary Host
+cd .ssh
+vi authorized_keys  (paste pub key that you copied)
+exit
+
+ 
+
+Either create one hosts file as inventory or pase the (ip adress / hostname /DNS) under sudo vim /etc/ansible/hosts
+vi hosts (ip adress / hostname /DNS)
+ansible all -m ping -i hosts or ansible all -m ping
+(cmnd) (user) (module option) (content)s (inventory option) inventory_file
+
+
+https://www.yamllint.com/
+
+
+--------------------------------------------------
+
+sudo apt purge ansible
+sudo apt install ansible -y
+ansible
+sudo apt 
+vim key 
+paste the key
+ssh ubuntu@13.51....
+ssh -i key ubuntu@13.51...
+hostname -i
+
+
+vim /etc/ansible/host
+ip-172 (under example line 1)
+vim hosts
+ansible all -m ping -i hosts

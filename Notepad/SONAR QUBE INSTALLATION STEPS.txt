@@ -1,0 +1,44 @@
+SONAR QUBE INSTALLATION STEPS
+------------------------------
+2gb is required for sonar qube installation
+so use t2.medium
+﻿
+
+free-h_(to see the storage)
+
+login as root
+#sudo su -
+# cd /opt
+
+sudo apt update
+sudo apt install openjdk-11-jdk
+
+apt install unzip
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.10.61524.zip
+unzip sonarqube-8.9.10.61524.zip
+
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.1.0.73491.zip
+unzip sonarqube-10.1.0.73491.zip
+
+sudo cp -r /root/sonarqube-10.1.0.73491 /opt/
+
+
+sudo adduser sonar
+password :admin
+sudo visudo
+# Add the following line
+sonar ALL=(ALL) NOPASSWD:ALL
+
+sudo chown -R sonar:sonar /opt/sonarqube-10.1.0.73491
+sudo chmod -R 775 /opt/sonarqube-10.1.0.73491
+
+su - sonar
+password: admin
+cd /opt/sonarqube-10.1.0.73491/bin/linux-x86-64
+./sonar.sh start
+
+./sonar.sh status
+
+
+
+ip address:9000

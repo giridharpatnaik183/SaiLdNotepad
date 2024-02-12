@@ -1,0 +1,91 @@
+Theorotical notes on DevOps
+
+Brief explaination of interconnection of all the concepts in devops 
+like cloud computing, linux, git, github, jenkins, nginx, docker ansible terraform and kubernetes
+
+Cloud Computing: Think of cloud computing as renting a computer or storage space over the internet instead of owning 
+and maintaining physical hardware. It allows you to access resources, like servers and databases, from anywhere. 
+
+SaaS (Software as a Service): Imagine you want to use a software application, like a word processor or email service, 
+but you don't want to install or manage it yourself. SaaS is like renting the software over the internet. 
+You access the software through a web browser, and the provider takes care of all the behind-the-scenes work, 
+such as hosting, maintenance, and updates. You can simply use the software without worrying about the technical details.
+
+PaaS (Platform as a Service): Now, let's say you want to develop and deploy your own application or website. 
+PaaS provides you with a platform or environment to build and run your applications without worrying about the underlying 
+infrastructure. It's like renting a fully equipped workshop to build something. The PaaS provider takes care of the servers, 
+operating systems, and other infrastructure components, while you focus on writing and deploying your application code.
+
+IaaS (Infrastructure as a Service): Imagine you need complete control over the infrastructure, similar to having 
+your own data center. IaaS provides you with virtualized infrastructure resources over the internet. It's like 
+renting a blank canvas on which you can build your own IT infrastructure. You have control over the servers, storage, 
+networking, and operating systems, but you're responsible for managing and maintaining them.
+
+To summarize, 
+SaaS is about using software applications without the hassle of installation and maintenance. 
+PaaS is a platform for building and deploying your own applications, while the provider manages the underlying infrastructure. 
+IaaS gives you more control, allowing you to create and manage your own virtualized infrastructure in the cloud.
+
+Multi-tenancy
+Just like the apartments in a building, each tenant in the cloud has their own separate space, which is isolated and 
+independent from others. They have their own virtual environment where they can run their applications and store their data.
+
+Linux: Linux is an operating system, like Windows or macOS, but it's known for being open-source and highly customizable.
+Many servers and cloud platforms use Linux because it's reliable, secure, and flexible.
+
+Git: Git is a version control system that helps developers manage and track changes in their code. 
+It allows multiple people to work on the same project simultaneously, merge their changes, 
+and roll back to previous versions if needed.
+
+GitHub: GitHub is a popular platform built on top of Git. It provides a web-based interface to store, 
+share, and collaborate on Git repositories. It's like a social network for developers, 
+allowing them to host their code, contribute to other projects, and manage issues and discussions.
+
+Jenkins: Jenkins is a tool used for continuous integration and continuous delivery (CI/CD). 
+It automates the building, testing, and deployment of software. Jenkins connects to Git repositories, 
+pulls the code, runs tests, and deploys the application, making it easier to release new features and updates.
+
+Nginx: Nginx is a web server that handles incoming network requests and serves web pages or content.
+It's known for its speed, scalability, and ability to handle high traffic. Nginx can also act as a reverse proxy,
+load balancer, or cache server, improving the performance of web applications.
+
+Docker: Docker is a platform for containerization. Containers are lightweight, isolated environments that package
+applications and their dependencies. Docker allows developers to build, ship, and run applications consistently 
+across different environments, such as development, testing, and production.
+
+Docker Hub: Docker Hub is a registry service on the cloud that allows you to download Docker images that are built
+by other communities. You can also upload your own Docker built images to Docker hub.
+
+Ansible: Ansible is an automation tool that simplifies the management and configuration of servers and infrastructure.
+It uses a simple language to define tasks and playbooks, allowing administrators to automate repetitive tasks and ensure
+consistent configurations across systems.
+
+Terraform: Terraform is an infrastructure as code (IaC) tool that helps provision and manage cloud resources.
+It allows you to define your infrastructure in declarative code, specifying the desired state of your infrastructure.
+Terraform then applies those changes, creating or modifying resources as necessary.
+
+Kubernetes: Kubernetes (often referred to as K8s) is an orchestration platform for containerized applications.
+It helps manage, scale, and deploy containers across a cluster of machines. Kubernetes provides features like load balancing,
+automatic scaling, and self-healing, making it easier to run and manage applications in production environments.
+
+In summary, DevOps is a set of practices and tools that aim to improve collaboration, automate processes, and ensure faster
+and more reliable software development and deployment. Cloud computing provides the infrastructure, Linux powers the servers,
+Git and GitHub enable version control and collaboration, Jenkins automates the development process, 
+Nginx handles web server duties, Docker facilitates containerization, Ansible automates infrastructure management, 
+Terraform provisions cloud resources, and Kubernetes orchestrates containerized applications. 
+Together, these concepts and tools form an interconnected ecosystem that enables efficient and scalable software development 
+and deployment.
+
+
+Difference between terraform and ansible
+
+Terraform is a tool for creating and managing infrastructure, like virtual machines and storage, mainly in cloud environments. 
+It uses a declarative approach, where you define the desired state of your infrastructure, 
+and Terraform takes care of making it happen.
+
+Ansible is a tool for automating tasks on various systems, like servers, networks, and desktops. 
+It uses a procedural approach, where you define a series of steps (called playbooks) to be executed in order.
+
+In summary, Terraform is for infrastructure provisioning, while Ansible is for general-purpose automation 
+and configuration management across different systems.
+

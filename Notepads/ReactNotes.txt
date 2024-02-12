@@ -1,0 +1,183 @@
+const newversion = (num1) => num1+50;
+console.log(newversion(10));
+
+class person {
+constructor(){
+this.name="sai";
+}
+printName(){
+console.log(this.name)
+}
+}
+const persons = new person();
+console.log(persons)
+
+command to install angular CLI
+-------------------------------
+ng new First --no-standalone
+
+ng version
+
+ng serve --host 0.0.0.0 --port 4200
+No
+
+ts page -> functionality and validations
+
+webpage - html,css,bootstrap | server/api   | database
+
+root component is the app component 
+
+we can reuse a component
+
+ng g c login
+
+
+How to create a seperate component for each login/signup ...
+
+first In cmd prompt go to the respective path 
+ex:- FIRST/src/app
+give command: ng g c component_name 
+ex: ng g c login
+
+write the html code in the login.component.html file
+write the css code in the login.component.css file 
+
+goto login.component.ts and copy the content present in the selector ex: app-login
+
+paste it in the app.component.html file ex: <app-login></app-login>
+		
+
+Date:- 27/12/23
+---------------
+
+
+task
+----
+take 3 numbers
+and 3 variables
+sum up on click show the result in the display box below
+
+
+employee.component.html should have ngmodel
+-------------------------------------------
+<input type="text" name="firstName" placeholder="First Name *" [(ngModel)]="firstName" required>
+
+===================================
+employee.component.ts should have 
+
+export class EmployeeComponent {
+  firstName: any;
+  lastName: any;
+  password: any;
+  confirmPassword: any;
+  gender: any;
+  email: any;
+  phone: any;
+  securityQuestion: any;
+  answer: any;
+
+ 
+  register() {
+    console.log('First Name:', this.firstName);
+    console.log('Last Name:', this.lastName);
+    console.log('Password:', this.password);
+    console.log('Confirm Password:', this.confirmPassword);
+    console.log('Your Mail:', this.email);
+    console.log('Your Phone:', this.phone);
+    console.log('Security Question:', this.securityQuestion);
+    console.log('Answer:', this.answer);
+    console.log('Gender:', this.gender);
+ 
+  }
+  ========================================
+
+paste the select of employee.component.ts in the app.component.html
+ex - <app-employee> </app-employee>
+
+app.module.ts
+-------------
+import { FormsModule } from '@angular/forms';
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ]
+  
+  
+  
+04/01/2024
+==========
+
+How to Post Data With validation:(Using Reactive form module)
+1.Add ReactiveFormsModule in app.module.ts
+2.In html Add [formGroup]="EquipmentForm" .
+3.Add formControlName in each Control to captre value.
+4.Now in ts crate one FormGroup object as
+EquipmentForm = new FormGroup({
+   status: new FormControl(null),
+   type:new FormControl(''),
+   description:new FormControl(''),
+}) 
+
+Step-1 
+------
+Add ReactiveFormsModule in app.module.ts
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+imports:ReactiveFormsModule
+
+Step-2
+------
+2.In html Add [formGroup]="EquipmentForm" 
+
+In currency.component.html
+add in form tag
+Eg: <form  [formGroup]="CurrencyForm" >
+
+Step-3
+------
+3.Add formControlName in each Control to capture value.
+ formControlName="forName"
+Ex:
+<label for="countryRegion">Country Region:</label>
+<input type="text" formControlName="countryRegion" id="countryRegion" name="countryRegion" required>
+
+Step-4
+------
+4.Now in ts create one FormGroup object as
+EquipmentForm = new FormGroup({
+   status: new FormControl(null),
+   type:new FormControl(''),
+   description:new FormControl(''),
+}) 
+
+Ex: 
+CurrencyForm:FormGroup;
+  constructor(){
+    this.CurrencyForm = new FormGroup({
+      countryRegion: new FormControl(''),
+      currencyName:new FormControl(''),
+      currencyCode:new FormControl(''),
+      currencySymbol:new FormControl(''),
+      status:new FormControl('')
+   })
+  }
+  getValue(){
+    // alert("button is working")
+    console.log(this.CurrencyForm.value);
+    console.log(this.CurrencyForm.valid);
+  }
+  
+To add Validations
+------------------
+In the ts file give validation for the required fields
+Ex: countryRegion: new FormControl('',[Validators.required,Validators.minLength(10)]),
+
+also in the html file give the validation 
+Ex:
+<button type="button" (click)="getValue()"[disabled]="CurrencyForm.invalid">Add</button>
+
+
+

@@ -1,0 +1,19 @@
+trip no --no of times the vehicle came.
+Instead of rejecting we will  just dump material.
+DL and truck no will be scanned by using QR code.
+size of weighing bridge and no of tyre's truck
+remark for material quality - just keep good & fine
+
+
+Quantity
+--------
+Filtering Options - to filter transactions based on criteria such as date, time, material type, or compliance status.
+Adding Comments -  to add comments or notes to transactions, providing details on the quantity assessment
+Attachment Upload - should have the option to upload attachments, such as images or documents
+Filtering Options -  should allow me to filter transactions based on criteria such as date, time, material type, or compliance status
+(only date filter is present )
+
+Quality
+-------
+Material Documentation - The system should provide links to relevant documentation for each material, such as quality specifications or testing results.
+

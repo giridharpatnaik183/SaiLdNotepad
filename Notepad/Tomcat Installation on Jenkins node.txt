@@ -1,0 +1,44 @@
+Tomcat Installation
+-------------------
+sudo apt-get update
+sudo apt-get install tomcat9 -y
+
+sudo apt-get install tomcat9-docs tomcat9-examples tomcat9-admin -y
+
+sudo cp -r /usr/share/tomcat9-admin/* /var/lib/tomcat9/webapps/ -v
+
+Change port no from 8080 to 8090:
+--------------------------------
+sudo vi /var/lib/tomcat9/conf/server.xml
+you need to scroll down by clicking down arrow button in this file change the port no from 8080 to 8090 
+at line starting with <Connector port="8080" protocol="HTTP/1.1"
+
+setup an user in tomcat:
+-----------------------
+sudo vi /var/lib/tomcat9/conf/tomcat-users.xml
+Scroll down all the way to the end of the file,
+Add the below lines in second last line above (above </tomcat-users>)
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="tomcat" password="password" roles="manager-gui,manager-script"/>
+
+
+Add more memory to JVM:
+----------------------
+sudo vi /etc/default/tomcat9
+
+Look for the line starting JAVA_OPTS and comment that line by adding #.
+Add the below line:
+JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -Xmx512m -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC"
+
+sudo systemctl restart tomcat9
+
+sudo systemctl status tomcat9
+
+sudo chmod -R 777 /var/lib/tomcat9
+/var/lib/tomcat9/webapps/ROOT/index.html
+
+
+docker run -d -p 4000:4000 4713ea645026
+
+docker run -d -p 4000:4000 ldtech-devapp3

@@ -1,0 +1,40 @@
+import React from 'react';
+import './App.css'; // Import your custom stylesheet
+
+function App() {
+  const redirectToHome = () => {
+    // Change the URL to homescreen.html
+    window.location.href = 'homescreen.html';
+  };
+
+  return (
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="login-container">
+            <img src="logo.jpg" alt="Logo" className="logo img-fluid mb-3" />
+            <h2 className="form-heading">Weighbridge Management System</h2>
+
+            <div className="form-group">
+              <input type="text" className="form-control" placeholder="User ID" />
+            </div>
+
+            <div className="form-group">
+              <input type="password" className="form-control" placeholder="Password" />
+            </div>
+
+            <div className="form-group text-center">
+              <a href="#">Forgot Password?</a>
+            </div>
+
+            <button className="btn btn-primary btn-block" onClick={redirectToHome}>
+              Sign In
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;

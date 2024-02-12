@@ -1,0 +1,28 @@
+sudo apt update
+sudo apt install curl
+
+close the instance and re-open
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 18.17.1
+
+node -v
+npm -v
+
+sudo apt-get update
+sudo apt-get install docker.io
+
+sudo apt update
+sudo apt install -y curl wget unzip
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+npm i react-scripts
+npm run start
+
+sudo docker-compose -f docker-compose.yml up
+
+docker-compose --version
+sudo docker login -u giridharpatnaik183 -p Jagarnath@123
+sudo docker tag my-modified-nginx-image giridharpatnaik183/my-modified-nginx-image:latest  ->to tag/build
+sudo docker push giridharpatnaik183/my-modified-nginx-image:latest   ->to push to hub

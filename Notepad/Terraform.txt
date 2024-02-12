@@ -1,0 +1,119 @@
+Terraform
+-----------
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+sudo apt update
+
+sudo apt-get install terraform
+
+
+
+Goto https://eu-north-1.console.aws.amazon.com/ec2/home?
+
+search for IAM click on it
+goto users in the left panel
+click on add user 
+give any user name 
+don't check on the box below and click on next
+click on attach policies directly
+search for any policy based on your need to add example s3(read/write/full) or Ec2 etc...
+click on next and create user
+Once the user creation is done search with the name and u will find the created user
+open it and goto security credentials below u will find access keys
+click on create access key 
+select Command line Interface (CLI) check on I understand and next
+need not fill Description tag value click on create access key
+there u will find the access key and secret access key.
+download the .csv file and click on done.
+
+
+AKIAWS2ZE5YLLXX75NME   -->Access key
+Girme+u6eRpj1gmpvm9ee44RAQTmn6+hmEG+kf5V  ->Secret access key
+
+
+In console
+mkdir terraform
+cd terraform
+mkdir -p dev test prod
+cd dev
+vim s3.tf  -->as we are creating s3 bucket so we gave bucket name.tf
+
+
+provider "aws" {
+  access_key = "AKIAWS2ZE5YLLXX75NME"
+  secret_key = "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"
+  region     = "eu-north-1"
+}
+
+resource "aws_s3_bucket" "first" {
+  bucket = "my-unique-test-s3-bucket"
+}
+
+
+
+terraform init  -> so that aws can download all the terraform modules
+terraform plan ->will show the output what we are doing..
+terraform apply -> will create a new instance
+
+
+
+--------------Creating new Instance for EC2-------AmazonEC2FullAccess -->add this
+provider "aws" {
+
+access_key= "AKIAWS2ZE5YLMCXJFMP3"
+secret_key= "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"
+region= "eu-north-1"
+
+}
+resource "aws_s3_bucket" "third" {
+bucket = "sai.dev.ec2.bucket"
+}
+resource "aws_instance" "fourth" {
+ami = "ami-0989fb15ce71ba39e"
+instance_type = "t3.micro"
+key_name = "sai"
+}
+
+------------------------------------------
+
+provider "aws" {
+
+access_key= "AKIAWS2ZE5YLMKCLGZWV"
+secret_key= "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"
+region= "eu-north-1"
+
+}
+resource "aws_s3_bucket" "first" {
+bucket = "sai.dev.s3.bucket"
+}
+resource "aws_instance" "second" {
+ami = "ami-0989fb15ce71ba39e"
+instance_type = "t3.micro"
+key_name = "sai"
+}
+
+------------------------------------------------
+environment {
+
+       AWS_ACCESS_KEY_ID    = credentials('AWS_ACCESS_KEY_ID')
+
+       AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+
+   }
+   
+   
+   withAWS(credentials: 'sam-jenkins-demo-credentials', region: 'us-east-2') {
+   
+   /var/lib/jenkins/workspace/Prod/s3-bucket-terraform
+   
+   terraform state pull > terraform.tfstate

@@ -1,0 +1,25 @@
+steps to start an UI
+--------------------
+start sonar
+-----------
+su - sonar
+admin
+cd /opt/sonarqube-10.1.0.73491/bin/linux-x86-64
+./sonar.sh start
+13.234.23.179:9000
+admin
+sonar
+
+start backend
+-------------
+cd /home/ubuntu/LdTech-DevApp3/backend
+sudo npm run dev
+else
+pm2 list
+pm2 delete 0
+pm2 start index.js --name=backend
+---------------------------------------
+start frontend
+--------------
+cd /home/ubuntu/LdTech-DevApp3
+sudo npm run start

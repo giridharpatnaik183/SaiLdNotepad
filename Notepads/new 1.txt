@@ -1,0 +1,104 @@
+WAP in Js to find sum of a four digit number without using loop and contro statement.
+
+function sumOfDigits(number) {
+    const digitSum = Math.floor(
+      (number % 10000) / 1000 +
+      (number % 1000) / 100 +
+      (number % 100) / 10 +
+      number % 10
+    );
+
+    return digitSum;
+  }
+  
+  const fourDigitNumber = 7564;
+  const result = sumOfDigits(fourDigitNumber);
+  console.log(`Sum of digits: ${result}`);
+  
+WAP using loop to find all prime numbers between 1 to 500
+number=6;
+c=0;
+ 
+for(let i=2;i<=Math.sqrt(number);i++){
+    if(number %i==0){
+        c= c + 1;
+    }
+}
+
+if(c==0){
+    console.log("prime")
+}
+else{
+    console.log("Not prime")
+}
+
+WAJP to find multiplication of any number till u get a single digit
+var mul = 1;
+
+function multiply(number) {
+  while (number !== 0) {
+    var digit = number % 10;
+    mul *= digit;
+    number = Math.floor(number / 10);
+  }
+  return mul;
+}
+
+var inputNumber = 769;
+var res=multiply(inputNumber);
+
+while (res > 9) {
+  mul = 1
+  res=multiply(res);
+}
+
+console.log( res);
+
+
+
+
+write a program in javasript to find sum of diit of a four digit number without using loop and contro statement.
+write a for loop to find all prime numbers  between 1 to 500
+Write a javascript program to find multiplicatin of any number till u get a single digit
+
+
+
+ 
+Upcoming EMI's	Amount	Date
+HDFC - 4922	    12.5K	10th
+HDFC - 6238	    8K		10th
+Cred EMI -1 	5.5K	2nd
+Cred EMI-2 		3.3K	2nd
+Total Amount	29.3K	
+
+
+Ideas
+-----
+take a loan of 5lac close all the loans - won't work
+take loan on someone else's name and pay him every month. 
+
+Idea-1
+------
+just swap -
+step-1 : take loan from y's account give him emi for 2-3 months
+step-2 : meanwhile your credit score increases take loan and clear his loan at once
+step-3 : pay your emi's
+
+Idea-2
+------
+leave icici credit card as it is 80k pay everymonth remove everymonth.
+
+pressurise venu to give the amount to pay the entire amount i.e (2,20,800/-)
+in the hdfc
+so (3,27,422 - 2,20,800/-) = 1,06,622 reamining no issue can clear bit by bit
+
+cred emi's not a problem can be paid every month. cred till july 8.7k after that 3.2k np.
+
+Idea-3
+------
+reamining from expenses is 
+11k-4k = 7k
+cred till july 8.7k after that 3.2k np.
+
+
+

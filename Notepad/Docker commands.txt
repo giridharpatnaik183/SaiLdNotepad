@@ -1,0 +1,133 @@
+docker commands   develop ship and deploy anywhere
+===============
+To install docker first open an aws instance in the machine
+
+commands -> sudo apt update
+		    sudo apt install docker.io -y
+			
+			sudo apt-get update
+			sudo apt-get install docker-compose
+			
+			
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+sudo chmod 666 /var/run/docker.sock
+groups jenkins
+sudo service jenkins restart
+
+			
+commands and uses
+-----------------
+sudo docker images -> shows all the containers present in the system
+sudo docker ps/ps-a -> shows all the contains ran/running 
+sudo docker pull nginix -> pulls nginix container to the machine
+sudo docker pull hello-world -> pulls hello-world container to the machine
+sudo docker pull ubuntu -> pulls ubuntu container to the machine
+sudo docker run nginix ->runs the nginix container u can check by using command sudo docker ps in another tab
+sudo docker run -it ubuntu -> runs the ubuntu container in interactive mode
+sudo docker run -d hello-world -> runs the hello-world container in detached mode (tells Docker to run the container in the background).
+sudo docker stop container ID -> To stop any running container
+sudo docker rm container ID -> To remove container using container ID
+sudo docker rmi image id/repository name -> To remove container using image name
+sudo docker rmi -f or --f image id -> To force fully remove the container
+
+sudo docker -logs container id
+or
+docker logs <containerID>
+
+
+first run the container in -d
+docker exec -it 8ede0234072e bash
+mkdir dockerfiles
+cd dockerfiles
+vim Dockerfile
+FROM httpd   -> paste this in the file save and exit
+docker build -t giridharpatnaik183/nginx:v1 .
+docker push giridharpatnaik183/nginx:v1
+
+docker cp sourcelocation destination location
+
+
+
+
+docker run -d --publish 8010:80 nginx  ->to make a container
+docker ps
+6dd2ecb176e6 -container id 
+docker exec -it <conainer_id>  bash  ->to modify container
+ls
+touch abc
+apt update && apt install vim -y
+docker ps
+6dd2ecb176e6 -container id 
+docker commit <container_id> my-modified-nginx-image  ->convert the container to image
+docker images
+docker run -d --publish 8020:20 my-modified-nginx-image
+docker exec -it 43ca419fd107a6a03c2ba2fa02f918966971d4625ebd4a52d45c9e2818ad4b5b bash
+ls check if the file is created
+exit from bash
+docker images
+docker ps
+docker login
+docker tag my-modified-nginx-image giridharpatnaik183/my-modified-nginx-image:latest  ->to tag/build
+docker push giridharpatnaik183/my-modified-nginx-image:latest   ->to push to hub
+
+
+sudo docker tag docker-react-web giridharpatnaik183/docker-react-web:v1
+sudo docker push giridharpatnaik183/docker-react-web:v1
+
+
+
+ps -aux (all user processes)
+
+
+
+docker commands
+===============
+docker run -p 8080:80 nginx -> mapping local port 8080 to container port 80
+docker run -d -p 8080:80 nginx -> to run the containerin background use '-d'
+docker stop 4ae3u -> to stop the running container
+docker system prune -> will remove all the exited containers
+docker rm -f 4ae3u -> will forcefully stop and remove a comtainer even if it is running in the background
+docker rm 4ae3u -> this command wont remove a container if it is running in background
+docker exec -it 4ae3u bash -> will go inside the container and run in bash 
+docker cp 4ae3u:sai.txt giri.txt ->to copy the file present inside the container and paste outside the container on the machine
+
+
+
+Here are some names of Docker images that are known for their smaller sizes:
+
+Alpine Linux: alpine
+BusyBox: busybox
+Scratch: scratch
+Tiny Core Linux: tinycore
+Ubuntu Minimal: ubuntu-minimal
+Debian Slim: debian-slim
+CentOS Minimal: centos-minimal
+Nano Server (Windows): mcr.microsoft.com/windows/nanoserver
+Alpine-based language-specific images like:
+Python: python:alpine
+Node.js: node:alpine
+Ruby: ruby:alpine
+Go: golang:alpine
+
+
+
+--------------------------------------------
+docker commands    4ae3u -> Container Id
+=============== 
+docker run -p 8080:80 nginx -> mapping local port 8080 to container port 80
+docker run -d -p 8080:80 nginx -> to run the containerin background use '-d'
+docker stop 4ae3u -> to stop the running container
+docker system prune -> will remove all the exited containers
+docker rm -f 4ae3u -> will forcefully stop and remove a comtainer even if it is running in the background
+docker rm 4ae3u -> this command wont remove a container if it is running in background
+docker exec -it 4ae3u bash -> will go inside the container and run in bash 
+docker cp 4ae3u:sai.txt giri.txt -> this will copy the file present inside the container and paste outside the container on the machine
+docket cp out.txt 4ae3u:In.txt -> this will copy the file present in the machine and paste inside the specified container.
+docker commit 4ae3u giridharpatnaik183/nginx:v7  -> this will commit the changes and give a tag where repository name as giridharpatnaik183/nginx and tag as v7
+docker run -d 4ae3u -> will run the conatiner specified
+docker exec -it containerId bash -> will open the specified container in bash mode
+ls -> you can find all the commited changes done before 
+
+curl ifconfig.me
+sudo netstat -ntlp

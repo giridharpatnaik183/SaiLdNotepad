@@ -1,0 +1,272 @@
+----------==========OSI MODEL==========----------
+
+Application layer is implemented in software. Example Chrome.
+		||
+        \/
+Presentation layer gets the data from Application layer, and convers the information/message into 
+machine understandable binarly format, this is known as translation.
+Before the data is transferred it goes under Encoding, Encryption, changing the data so that it's readable only
+to the person that was sent to. It also provides Abstraction.
+Data is also compressed.
+		||
+		\/
+Session layer helps in setting up and managing the connections and it enables sending and receiving the data followed by 
+termination of the connected sessions. Authentication and Authorization takes place.
+		||
+		\/
+Transport Layer has its own protocol on how to tranport data like UDP and TCP.
+Data received from session layers is divided into small data units known as segments.
+every segment will contain the source and the destination's port number and a sequence number.
+port number : The data will be received to the correct application.
+sequence number : It basically helps to reassamble the segments in the correct order as data is transferred in chunks and 
+it has a sequence number.
+flow control:Transport layer controls the amount of data that is being transferred.
+It also works as error control.
+It adds something known as checksum to every data segment, In that way we can figure out the data that was received by your 
+friend is good or not.
+Connection Oriented transmission (TCP), In TCP 100% data is transferred and you will get the acknowledgement from ur friend
+like he has received the data, Example:- Email, FTP 
+Connection less oriented transmission (UDP), UDP is faster as it doesn't provide any feedback if data is lost or not.
+some data gets lost in udp like gaming and vdeo conferencing.
+		||
+		\/
+Network Layer works for the transmission of received data segments from one computer to another that is located in another
+network. IP addressing done in network layer is known as Logical addressing. Every computer has its own ip address.
+Network layer assigns sender's and receiver's Ip address to every segment and it form IP packet, so that every packet can reach
+its correct destination.and also it form routing i.e moving one data packet from source to destination based on ip address..
+It will perform some logical addressing and transfers the data.
+		||
+		\/
+Datalink Layer allows you to directly communicate with the computers and hosts.
+Datalink layer will receive the data packet from the Network layer and this data packer contains the IP addresses of 
+both the sender and the receiver
+A packet conatins ip address of sender, receiver and subnet mask.
+To which application does the data needs to be sent which is known as Physical addressing and is done at data link layer.
+physical address or also called as mac address. mac addresses of sender and receiver are assigned to the data packet to
+form a frame. frame is basically a data unit of the data link layer.
+Mac address is a 12 digit alpha numeric number of the network interface of your computer.
+Every application/device has a different mac address.
+		||
+		\/
+Physical layer basically contains hardware like wires..It transmits the bits from electrical signals incase of wires,
+light incase of optical fibre cable or radio signal incase of wifi..
+		
+----------=========Another model TCP/IP Model=========----------
+It is basically known as Internet Protocol suite developed by ARPA.
+similar to the OSI model but the layer are reduced from 7 to 5.
+Application layer -> (Application,presentation and session copressed to a single layer)
+Transport layer
+Network layer
+Datalink layer
+Physical layer
+This Model is practically used whereas the OSI model is concept based.
+
+In details of Each layer
+Application Layer
+This is the layer users interact with. It consists of various applications like web browsers, whatsapp etc..On your devices
+Protocols 
+1. Client server architecture
+Ping time:It measures the roundtrip time from the message sent from the origin host to the desination of the computer and they 
+are echoed back.
+Can ping time be redused ?
+No, because we are getting the best possible ping time available as the message are travelling at the speed of light through optical 
+cables and wires.
+
+2. P2P (Peer to Peer)
+computers interconnected like a star which is decentralized.
+and each system here can be called as both client and server.
+
+Networking Devices that we use
+===============================
+1. Repeater – A repeater operates at the physical layer. Its job is to regenerate the signal over the same network before
+the signal becomes too weak or corrupted so as to extend the length to which the signal can be transmitted over the same 
+network. An important point to be noted about repeaters is that they do not amplify the signal. When the signal becomes weak,
+they copy the signal bit by bit and regenerate it at the original strength. It is a 2 port device.
+
+2. Hub – A hub is basically a multiport repeater. A hub connects multiple wires coming from different branches, 
+for example, the connector in star topology which connects different stations. Hubs cannot filter data, so data packets
+are sent to all connected devices. In other words, collision domain of all hosts connected through Hub remains one. Also, 
+they do not have the intelligence to find out best path for data packets which leads to inefficiencies and wastage.
+
+Types of Hub
+
+Active Hub:- These are the hubs which have their own power supply and can clean, boost, and relay the signal along with the 
+network. It serves both as a repeater as well as wiring centre. These are used to extend the maximum distance between nodes.
+
+Passive Hub :- These are the hubs which collect wiring from nodes and power supply from active hub. These hubs relay signals 
+onto the network without cleaning and boosting them and can’t be used to extend the distance between nodes.
+
+Intelligent Hub :- It work like active hubs and include remote management capabilities. They also provide flexible data rates 
+to network devices. It also enables an administrator to monitor the traffic passing through the hub and to configure each port 
+in the hub.
+
+3. Bridge – A bridge operates at data link layer. A bridge is a repeater, with add on the functionality of filtering content 
+by reading the MAC addresses of source and destination. It is also used for interconnecting two LANs working on the same 
+protocol. It has a single input and single output port, thus making it a 2 port device.
+
+Types of Bridges
+
+Transparent Bridges:- These are the bridge in which the stations are completely unaware of the bridge’s existence i.e. whether
+or not a bridge is added or deleted from the network, reconfiguration of the stations is unnecessary. These bridges make use 
+of two processes i.e. bridge forwarding and bridge learning.
+
+Source Routing Bridges:- In these bridges, routing operation is performed by source station and the frame specifies which 
+route to follow. The host can discover frame by sending a special frame called discovery frame, which spreads through the 
+entire network using all possible paths to destination.
+
+4. Switch – A switch is a multiport bridge with a buffer and a design that can boost its efficiency(a large number of ports 
+imply less traffic) and performance. A switch is a data link layer device. The switch can perform error checking before 
+forwarding data, that makes it very efficient as it does not forward packets that have errors and forward good packets 
+selectively to correct port only. In other words, switch divides collision domain of hosts, but broadcast domain remains same.
+
+5. Routers – A router is a device like a switch that routes data packets based on their IP addresses. Router is mainly a 
+Network Layer device. Routers normally connect LANs and WANs together and have a dynamically updating routing table based on 
+which they make decisions on routing the data packets. Router divide broadcast domains of hosts connected through
+
+6. Gateway – A gateway, as the name suggests, is a passage to connect two networks that may work upon different networking 
+models. They work as messenger agents that take data from one system, interpret it, and transfer it to another system. Gateways
+are also called protocol converters and can operate at any network layer. Gateways are generally more complex than switches or 
+routers. A gateway is also called a protocol converter. 
+
+7. Brouter – It is also known as the bridging router is a device that combines features of both bridge and router. It can work 
+either at the data link layer or a network layer. Working as a router, it is capable of routing packets across networks and 
+working as the bridge, it is capable of filtering local area network traffic. 
+
+8. NIC – NIC or network interface card is a network adapter that is used to connect the computer to the network. It is 
+installed in the computer to establish a LAN.  It has a unique id that is written on the chip, and it has a connector to 
+connect the cable to it. The cable acts as an interface between the computer and the router or modem. NIC card is a layer 2 
+device which means that it works on both the physical and data link layers of the network model. 
+
+Protocols
+=========
+web protocols:
+--------------
+TCP/IP:
+->http:data is transferred like webpages html like that..
+->dhcp: allocates the ip to devies connected to your network
+->ftp:to send the files
+->smtp:to send the emails
+->pop3 & imac: to receive the emails
+-> SSH: To connect to other computers
+-> VNC: virtual networl conrolling for graphical control
+-> Telnet:(port 23) to connect to a remote host or device using a telnet client.
+-> UDP: connectionless session, data might be lost in this during the lifetime of the session.
+
+Socket: It is the Interface between the process and the internet.
+Ports: Emphemral ports -> if several instances are open on a chrome.
+http:(Application layer) It's a stateless protocol
+tcp:(Transport layer) makes sure that all the data is received.
+Https methods: 
+1.GET
+2.POST
+3.PUT
+4.DELETE
+
+Whenever you send a request you need to know whether the rquest was sent or failed, for that there are status codes
+200 means request was sucessful
+404 means not found
+400 means bad request
+500 means there was some internal server error
+
+Status category
+---------------
+1XX range -> Informational Category
+2XX range -> sucess codes
+3XX range -> redirectional purposes
+4XX range -> client error
+5XX range -> server error
+
+Cookies: It is a unique string, It is stored in the client's browser.
+when you visit the browser for the first time it will set a cookie.
+
+
+Google it :
+How do i disable 3rd party cookies, what measures can we take.
+how do companies manage cookies, what do they use for
+
+How email works ?
+SMTO: SIMPLE MAIL TRANSFER PROTOCOL
+POP3: POST OFFICE PROTOCOL
+SMTP : To send the messages     }\ _ _These are application layer protocols
+POP3 : To receive the messages	}/
+
+How is the data transported, which transport layer protocol do we use ?
+TCP because we want entire data to be sent, which UDP can't do.
+
+IMAP: Internet message access protocol, It allows to view emails on multiple devices.
+
+-------------------
+when we type google.com how does it know where to fetch it ? here comes DNS, it uses DNS to find ip address of google server
+what dns does is it take the url example google.com and then converts it to ip address after that it will connect to the server.
+DNS : Domain name system, it is a directory service /database.
+Domain names are mapped with the ip addresses
+
+
+mail.google.com
+where 
+mail:sub domain
+google:second-level domain
+com:top level domain
+
+Root DNS servers: 1st point of contact when you write a domain name
+they have top level domains for example .io,.com,.org
+they have second level domain for example student.io,classroom.org,google.com
+
+
+Imp Note: we cannoy buy a domain we can just rent it.
+Example: we rent the domain from Godaddy.com and it rents from ICANN
+
+Transport layer: Transports the data from the network to the Application.
+Network layer: Transfers the data from one network to another network.
+
+Transport layer is located in our devices.
+
+Transport layer takes care of congestion control.
+Congestion control algorithms built in tcp.
+
+
+
+
+------------
+Transport layer protocols
+TCP & UDP
+Application layer protocols
+Http 
+Network layer protocol
+Ip
+
+----------
+
+UDP: User Datagram Protocol
+1. Data may not be delivered
+2. Data may change on the way
+3. Data may not be in order
+
+UDP uses checksum
+
+UDP Packet
+----------
+It contains source port number, destination port number, length of datagram and checksum
+
+Use cases:
+It is very faste.
+Video conference apps
+DNS uses UDP
+Gaming Apps uses UDP
+
+
+TCP: Transmission Control Protocol
+Transport Control Protocol
+Application layer send a lot of raw data and tcp segments this data -> divide in chunks and headers
+Congestion control
+Takes care of when data doesn't arrive
+and maintains the order of the data.
+
+Features:
+Connection Oriented
+Error Control
+Congestion Control
+full duplex -> 2
+
+
+

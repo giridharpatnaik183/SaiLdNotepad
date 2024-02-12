@@ -1,0 +1,78 @@
+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
+
+Steps to create a react project
+==============================
+Example for creating a chatbot-app
+
+create a folder on your pc Ex: ChatbotApp
+npx create-react-app react-chatbot-app
+cd react-chatbot-app
+npm install axios
+Step 5: Set Up the Server
+Follow the instructions in the previous response to create the server script (server.js) in your project folder.
+
+Step 6: Update src/App.js
+Replace the contents of src/App.js with the following code:
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [userInput, setUserInput] = useState('');
+  const [chatMessages, setChatMessages] = useState([]);
+
+  const openaiApiEndpoint = 'http://localhost:3000/send-message';
+
+  const sendMessageToChatbot = async (message) => {
+    try {
+      const response = await axios.post(openaiApiEndpoint, { userMessage: message });
+      const reply = response.data.reply;
+      setChatMessages([...chatMessages, { role: 'bot', content: reply }]);
+    } catch (error) {
+      console.error('Error communicating with the chatbot:', error);
+    }
+  };
+
+  const handleUserInput = () => {
+    setChatMessages([...chatMessages, { role: 'user', content: userInput }]);
+    sendMessageToChatbot(userInput);
+    setUserInput('');
+  };
+
+  return (
+    <div className="App">
+      <div id="chat-container">
+        {chatMessages.map((msg, index) => (
+          <div key={index} className={msg.role}>
+            {msg.content}
+          </div>
+        ))}
+      </div>
+      <form onSubmit={(e) => { e.preventDefault(); handleUserInput(); }}>
+        <input type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
+
+Step 7: Run the Server and React App
+In two separate terminals, run the following commands:
+
+Terminal 1 (for the server):
+node server.js
+
+Terminal 2 (for the React app):
+npm start
+
+This will start the server at http://localhost:3000 and the React app at http://localhost:3001. Open your browser and go to http://localhost:3001 to see your React app.
+
+Important Notes:
+Make sure the server (server.js) is running while testing the React app.
+
+Replace the OpenAI API key in the server script with your actual key.
+
+For a production environment, consider additional security measures and configurations.
+
+This example provides a basic setup for a React app with a chat interface. You may want to enhance it further based on your specific requirements.

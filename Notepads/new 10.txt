@@ -1,0 +1,15 @@
+To-do list 
+----------
+Plugin/API for camera access.
+admin page changes.
+find out if we can get the source code.
+
+
+1. CC CameraView component for CODESYS VISU, which is a control component that enables GPU 
+accelerated decoding and display of video feeds from IP cameras or other sources
+
+https://crosscontrol.com/manual/CODESYS%20V3.5.17.30%20Guide/components/CameraView.html
+
+2. You can also check out the RapidAPI collection of camera APIs, which offers various services 
+for camera image management, such as traffic images, security cameras, and camera scanner apps
+

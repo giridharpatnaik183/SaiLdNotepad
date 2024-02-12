@@ -1,0 +1,210 @@
+How to work with YAML files
+YAML- yet another markup language (previously)
+      YAML aint markup language (now)
+	  
+Data Serialisation
+------------------
+storing of data in any forms like json or xml etc..
+
+serialisation is the process of coneverting the data objects that is present in some complex data structures
+into a stream of storage.
+
+Data serialisation means If you want to represent this object in a file where you can read, code and modify those
+files are known as Data serialisation language/files.
+Data serialisation languages: YAML,JSON,XML
+
+
+OBJECT TO FILE -> SERIALISATION
+FILE TO OBJECT -> DE-SERIALISATION
+
+Why is it call YAML aint markup language ?
+because markup language are used to store documents but yaml is use for storing documents as well as Objects data
+
+why yaml
+beacuse you have a code and want to transfer to different application but those application wont support the type
+of code you sent here the yaml comes as yaml supports in all the application it is universal.
+converting the object into a yaml files ->serailisation
+convert the yaml file back into object de-serialisation
+
+used in Configuration file: like docker/Kubernetes etc..
+used in logs and cache's etc
+
+
+Benifits:
+---------
+easy and simple to read
+It has a strict syntax - Indentation is Important
+Easily convertable to json,xml
+most programming languages use yaml
+more powerful when representing complex data
+Parsers etc various tools available
+Parsing is easy
+
+google : k8slens ide
+
+extension is .yaml or yml anything is fine..
+yaml is case sensitive
+
+If there are 3 objects and if you want to seperate it give ---(3 dashes)
+...(to end the document)
+
+key-vale pair
+lists
+block style
+
+yamllint.com to check whether the syntax is correct or not
+
+Key-value pair
+"sai" : "I am a human being"
+718943455084 : "This is my Aadhar Number"
+--- (to go to next block)
+lists
+#lists
+-name
+-phone
+-address
+-pin
+---
+blocks
+cities:
+  - Rayagada
+  - Rajahmundry
+  - Bangalore
+  - Bhubaneshwar
+... (to end the document)
+
+Data types
+----------
+#String variables (3 ways to represent string in yaml)
+myself: Giridhar Sai
+Name: "sai"
+Gender: 'Male'
+
+Note: you can have any sentence or words without : or - in a line.
+
+To write a single line into multiple line
+use >
+example
+message: >
+My name
+is 
+Giridhar
+Sai 
+Patnaik
+
+yaml auto detects the data type
+
+Boolean values: No/n/N/false/False/False/FALSE
+same for true yes/y/Y
+
+In order to specify the data type use !!type
+example
+positivenumber: !!int 45
+binarynumber: !!int 010100
+octalnum: 06856
+hexa: !!int 0*45
+commavalue:!!int 500_000 #500,000
+                   
+#Floating point Numbers
+marks: !!float 79.86
+infinite: !!float .inf
+not a num: .nan
+booleanValue: !!bool No
+message: !!str Hello world
+
+#null
+surname: !!null Null # or null NULL ~
+~: this is a null key
+
+
+#To create nested items
+-
+ -mango
+ -apple
+ -banana
+-
+ -shirt
+ -trouser
+ -shoes 
+-
+ googles
+ hat
+ watch
+- 
+ ---
+ #Key-value pairs are called as maps
+ #!!map
+ #Nested mappings: map within an map
+name: Giridhar
+role:
+  age: 25
+  job: swe
+---
+ #Pairs: keys may have duplicate values
+ #!!pairs
+pair example: !!pairs
+  - job: trainee
+  - job: swe
+---
+#same as 
+pair examples: !!pairs [job: trainee, job: swe]
+  #This will be an array of hash tables
+
+  #Set will allow you to have unique values
+names: !!set
+? sai
+? sonu
+? suman
+
+---
+#If you want to represent the whole sequence as a value
+#In that case you can use dictionary !!omap
+people: !!omap
+  - sai:
+     name: sai
+     age: 25
+     height: 5.6
+  - sidhu:
+     name: sidhu
+     age: 24
+     height: 5.4
+---
+#Reusing some properties using anchors
+#Anchors basically means what do u want to copy and where do you want to copy
+#if for example fav fruit and dislikes are same for all the we use anchors
+# &base is the command , any name can be given like &likes etc..
+
+likings: &base
+  fav fruit: mango
+  dislike: grapes
+
+person1:
+   name: sai
+   fav fruit: mango
+   dislike: grapes
+
+person2:
+   name: sidhu
+   fav fruit: mango
+   dislike: grapes
+
+#we need not write the fav fruit and dislike multiple times if they are same.
+#just use the command <<: *base
+
+person3:
+   name: sonu
+   <<: *base
+
+#you can also override example
+person4:
+  name: suraj
+  <<: *base
+  dislike: berries
+  
+  
+➡️ Resources:
+Lens: https://k8slens.dev/?utm_source=Cloud...
+Monokle: https://github.com/kubeshop/monokle?u... 
+Datree: https://datree.io/?utm_source=youtube...
+How to validate Kubernetes YAML files: https://itnext.io/how-to-validate-kub...
+

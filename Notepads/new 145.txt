@@ -1,0 +1,9 @@
+Steps to deploy a JenkinsAPI
+----------------------------
+git clone repo-url
+cd Jenkinsapi/
+mvn clean package
+cd target/
+nohup java -jar Jenkins_Api_application-0.0.1-SNAPSHOT.war &
+
+

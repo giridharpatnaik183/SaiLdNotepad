@@ -1,0 +1,64 @@
+JDBC Steps
+----------
+Step-1
+------
+Import JDBC Packages:import java.sql.*;
+
+Step-2
+------
+Load and Register JDBC Driver:
+Load the JDBC driver for the database you want to connect to. 
+This step is necessary for establishing a connection with the database.
+
+Class.forName("com.mysql.cj.jdbc.Driver");
+
+Step-3
+------
+Establish Connection:
+Create a connection to the database using DriverManager.getConnection(). 
+You need to provide the database URL, username, and password.
+
+Establish Connection: 
+String url = "jdbc:mysql://localhost:3306/your_database";
+String username = "your_username";
+String password = "your_password";
+
+Connection connection = DriverManager.getConnection(url, username, password);
+
+Create Statement:
+Create a Statement object to execute SQL queries. 
+There are two types of statements: 
+
+Statement for general-purpose queries 
+Statement statement = connection.createStatement();
+
+and PreparedStatement for precompiled queries.
+PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM your_table WHERE column = ?");
+
+Execute SQL Queries:
+Use the executeQuery() method for SELECT queries and
+ executeUpdate() for INSERT, UPDATE, DELETE, and other data manipulation queries.
+ 
+Process Results:
+If you executed a SELECT query, process the results using the ResultSet object
+while (resultSet.next()) {
+    // Process each row of the result set
+    String value = resultSet.getString("column_name");
+    // Perform actions with the retrieved data
+}
+
+Close Resources:
+Always close the ResultSet, Statement, and Connection objects to free up resources
+ and prevent memory leaks.
+resultSet.close();
+statement.close();
+connection.close();
+
+Handle Exceptions:
+Surround your JDBC code with try-catch blocks to handle exceptions. 
+Common exceptions include SQLException and ClassNotFoundException.
+try {
+    // JDBC code
+} catch (SQLException e) {
+    e.printStackTrace();
+}

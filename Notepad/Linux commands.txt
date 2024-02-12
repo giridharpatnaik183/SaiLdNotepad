@@ -1,0 +1,121 @@
+Linux commands
+==============
+ls: List files and directories in the current directory.
+Example: ls or ls -l (long format)
+
+cd: Change directory.
+Example: cd /path/to/directory
+
+pwd: Print working directory.
+Example: pwd
+
+mkdir: Create a directory.
+Example: mkdir new_directory
+
+rm: Remove files and directories.
+Example: rm file.txt or rm -r directory
+
+cp: Copy files and directories.
+Example: cp file.txt destination/ or cp -r directory/ destination/
+
+mv: Move or rename files and directories.
+Example: mv file.txt new_location/ or mv old_name.txt new_name.txt
+
+cat: Concatenate and display file content.
+Example: cat file.txt
+
+more: Display file content one page at a time.
+Example: more file.txt
+
+less: Display file content with backward navigation.
+Example: less file.txt
+
+head: Display the beginning of a file.
+Example: head file.txt
+
+tail: Display the end of a file.
+Example: tail file.txt
+
+grep: Search for a pattern in a file.
+Example: grep "pattern" file.txt
+
+chmod: Change file permissions.
+Example: chmod 755 file.txt (gives read, write, and execute permissions to the owner, 
+and read and execute permissions to the group and others)
+
+chown: Change file ownership.
+Example: chown user:group file.txt
+
+chgrp: Change group ownership.
+Example: chgrp new_group file.txt
+
+sudo: Execute a command with superuser privileges.
+Example: sudo command
+
+apt-get: Package handling utility (Ubuntu and Debian-based systems).
+Example: apt-get install package_name
+
+yum: Package handling utility (RHEL, CentOS, and Fedora systems).
+Example: yum install package_name
+
+wget: Download files from the web.
+Example: wget http://example.com/file.txt
+
+curl: Transfer data from or to a server.
+Example: curl http://example.com
+
+ssh: Secure Shell - remotely login to another machine.
+Example: ssh username@hostname
+
+tar: Archive files.
+Example: tar -cvf archive.tar file1 file2
+
+gzip: Compress files.
+Example: gzip file.txt
+
+gunzip: Decompress files compressed with gzip.
+Example: gunzip file.txt.gz
+
+find: Search for files and directories.
+Example: find /path/to/search -name "filename"
+
+df: Show disk space usage.
+Example: df -h (displays sizes in human-readable format)
+
+du: Estimate file and directory space usage.
+Example: du -sh directory (displays the total size of the directory)
+
+man: Display the manual page of a command.
+Example: man command
+
+history: Show a list of recently executed commands.
+Example: history
+
+kill psid: gracefully kill process
+kill -9 psid: forcefully kill process
+
+To set numbers
+less -N file.txt -> In less mode
+se nu ->In vi mode
+
+rm: to remove a file
+rm -r: to remove a directory
+
+d rwx(u) rwx(g) rwx(o) : d-directory,u-user,g-group,o-others
+to give permission to specific user or group or others
+chmod u+r/w/x filename
+chmod g+r/w/x filename
+chmod o+r/w/x filename
+
+top:gives real time data of cpu
+
+ps -ax:gives all the running process
+
+In less mode to follow the appending lines use shift+file
+
+mkdir -p folder1/folder2/folder3: to create nested folders
+rm -r folder1/folder2/folder3 folder1/folder2 folder1
+
+program_A|program_B -> program A's output becomes program B's input
+program_A>filename.txt ->redirects the output of "program_A" to a file named "filename.txt" in the current directory.
+

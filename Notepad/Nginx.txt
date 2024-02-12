@@ -1,0 +1,39 @@
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Set environment variables (if needed)
+ENV SOME_ENV_VARIABLE=value
+
+# Set the working directory (if needed)
+WORKDIR /usr/share/nginx/html
+
+# Copy Nginx configuration files to the container
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY sites-available/default /etc/nginx/sites-available/default
+
+# Expose the port Nginx will listen on
+EXPOSE 80
+
+# Command to start Nginx (it is automatically started by the parent image)
+# CMD ["nginx", "-g", "daemon off;"] # Uncomment this if needed, but it's usually not required since Nginx starts automatically.
+
+
+
+# Ensure that Docker is installed and accessible on the Jenkins server
+docker --version
+
+# Go to the repository directory
+cd /path/to/your/repository
+
+# Pull the latest changes from the GitHub repository
+git pull
+
+# Build the Docker image
+docker build -t my_nginx_image .
+
+# Stop and remove any existing containers with the same name (if any)
+docker stop my_nginx_container || true
+docker rm my_nginx_container || true
+
+# Run the Docker container
+docker run -d -p 80:80 --name my_nginx_container my_nginx_image

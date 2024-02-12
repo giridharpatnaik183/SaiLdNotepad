@@ -1,0 +1,121 @@
+To-do list
+----------
+1> study about weighing bridge 
+2> check the pricing of different companies providing the service of the application
+https://i3ms.odishaminerals.gov.in/MIS/TruckNoWiseSearchReport.aspx
+
+
+----------12/01/2024-------------------------------------
+
+site location with date---library data fetch from server --done
+and which weighing machine
+approved/rejected reason in the report
+gps tracking
+check the weight of the truck from the invoice provided from mines
+
+rejection
+---------
+mismatch/difference of input weight 
+quality mismatch/difference
+
+
+
+remove edit from transaction
+
+------------16/01/2024------------------------------------------
+
+load cell calibration & software
+auto calibration
+what is weighing bridge woking and components used 
+competator
+real time information
+industry players price and product
+
+rejection tolerance 0.05%
+
+gross deduction --formula
+net deduction
+
+ignore overweight
+
+season wise weight variation
+
+theft control 
+
+size of weighing bridge and no of tyre's truck
+
+remark for material quality - good / fine
+
+lab test report attach with weighment no
+
+level 1 and level 2 test report
+
+quality system generated cannot tampered
+
+monogram scan and get the details of truck 
+
+customer suuplier transporter 
+
+DL and truck no. should be scanned by using QR code.
+
+Capture the photo of truck no. from camera.
+
+in and out of the weighing bridge
+
+
+
+------18/01/2024----------
+
+token system for queue - kiosk
+
+link with vaahan for dl check
+
+if smart camera added what would be the extra cost -- which will decrease the operation time
+
+dont reject just dump material 
+
+level-2 check attach to the weighment no.
+
+keep suspicious vehicle to alert. to check next time --yellow alert and red alert
+
+live camera access..
+
+cost analysis ...selling and pricing
+
+usp
+
+time management..less time taking
+
+operating cost should be less..
+
+trip no --no of times the vehicle came
+
+time consumed by each vehicle..
+
+
+----ans---
+Automatic Number Plate Recognition (ANPR)
+https://www.amazon.in/HAWK-EYE-SURVEILLANCE-License-Recognition/dp/B07MTV8SPZ
+
+
+08/02/24
+--------
+data capture through scanner / data should be present in database / manual entry.
+uniquely identify the specific truck if number of load comes in a day(for quantity mismatch).
+Ticket No/Weighment no should be unique inorder to track the fault one.
+Material check Level-1 if wrong material reject.
+purchaser -> gross weight by deafult and seller -> tar weight by default.
+status -> pending and closed.
+
+09/02/2024 (Standup)
+----------
+Ask how is the po number and challen no generated.
+Rejected item will be dumped or sent back.
+
+My question is we shouldn't give access to create a new account also.. ex Myweigh Bridge.
+
+
+
+
+
+

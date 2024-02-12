@@ -1,0 +1,30 @@
+Pm2 Installation
+----------------
+sudo npm install pm2 -g
+cd /home/ubuntu/LdTech-DevApp/backend
+pm2 start index.js --name=backend
+pm2 startup
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+pm2 start index.js --name=frontend
+
+LdTech-DevApp/src/components/Subpages/
+lsof -i :3001
+lsof -i :3004
+
+
+steps to start sql
+------------------
+sudo npm install cors
+sudo npm run dev (if this doesn't work give the below command)
+sudo npm install -g nodemon
+sudo npm run dev
+sudo npm install axios
+sudo npm run dev
+
+
+"scripts": {
+  "start": "node src/index.js",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},

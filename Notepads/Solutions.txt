@@ -1,0 +1,265 @@
+Java Assessment
+Date : 4 th April 2023
+
+Scenario – 1:
+Sarika wants to open a saving account in ABC Bank.
+But the bank is having certain terms and conditions to be checked before approving the account
+opening request from Sarika.
+Age : between 18 to 55
+Base Location : Bhubaneswar/ Mangalore /Pune [Only 3 cities are allowed]
+Date of birth : YYYY/MM/DD format [optional]
+Initial Deposit : &gt;=5000.00
+Hint :
+public void validate_age(){
+
+}
+public void validate_BaseLocation(){
+
+}
+public void validate_DOB(){
+}
+
+Enter all the values as input from user.
+
+If all validations are successful then print the message “Application is approved for further
+processing “
+
+Create this menu driven program .
+
+Solution
+========
+package JavaTest;
+
+import java.util.Scanner;
+
+public class BankAccountValidation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("Welcome to ABC Bank");
+            System.out.println("1. Open a new account");
+            System.out.println("2. Exit");
+            System.out.println("Enter your choice: ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter your age: ");
+                    int age = scanner.nextInt();
+                    System.out.println("Enter your base location (Bhubaneswar/Mangalore/Pune): ");
+                    String location = scanner.next();
+                    System.out.println("Enter your date of birth (YYYY/MM/DD format): ");
+                    String dob = scanner.next();
+                    System.out.println("Enter your initial deposit amount: ");
+                    double deposit = scanner.nextDouble();
+                    if (validate_age(age) && validate_BaseLocation(location) && validate_DOB(dob) && deposit >= 5000.00) {
+                        System.out.println("Application is approved for further processing");
+                    } else {
+                        System.out.println("Sorry, your application cannot be processed at this time.");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Thank you for visiting ABC Bank!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 2);
+    }
+
+    public static boolean validate_age(int age) {
+        if (age >= 18 && age <= 55) {
+            return true;
+        }
+        System.out.println("Sorry, you are not eligible to open an account as you do not meet the age requirement.");
+        return false;
+    }
+
+    public static boolean validate_BaseLocation(String location) {
+        if (location.equals("Bhubaneswar") || location.equals("Mangalore") || location.equals("Pune")) {
+            return true;
+        }
+        System.out.println("Sorry, you are not eligible to open an account as you do not reside in one of the allowed cities.");
+        return false;
+    }
+
+    public static boolean validate_DOB(String dob) {
+        try {
+            String[] parts = dob.split("/");
+            int year = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int day = Integer.parseInt(parts[2]);
+            if (year < 1900 || year > 2023 || month < 1 || month > 12 || day < 1 || day > 31) {
+                throw new Exception();
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("Sorry, you have entered an invalid date of birth.");
+            return false;
+        }
+    }
+}
+
+
+Scenario – 2:
+=============
+
+The appraisal meeting is going on and you got to know that this year irrespective of all the bands
+hike will be 10% .
+Your salary :[ 89000.00678]
+You need to get the amount in return after the hike till 2 decimal points.
+
+Hint :
+public double mysalaryafterhike() {
+
+return the updated salary;
+}
+
+Solution
+========
+package JavaTest;
+import java.util.Scanner;
+
+public class mysalaryafterhike {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your current salary: ");
+        double currentSalary = scanner.nextDouble();
+
+        double updatedSalary = mysalaryafterhike(currentSalary);
+        System.out.println("Updated salary after 10% hike: " + updatedSalary);
+    }
+
+    public static double mysalaryafterhike(double currentSalary) {
+        double hikeAmount = currentSalary * 0.1;
+        double newSalary = currentSalary + hikeAmount;
+        return Math.round(newSalary * 100.0) / 100.0;
+    }
+}
+
+Scenario – 3:
+In abcbank.com page the city list is having all the Indian cities .
+But as per the best practice these are not in sorted order.
+Write a program to sort the cities available in City List / ArrayList
+Cities - Hyderabad,Bhubaneswar,Pune,Chennai,Kochin,Trichi,Allopally ,Mangalore // Please initialize
+
+Solution
+========
+package JavaTest;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SortCities {
+    public static void main(String[] args) {
+        // Initialize the list of cities
+        ArrayList<String> cities = new ArrayList<String>();
+        cities.add("Hyderabad");
+        cities.add("Bhubaneswar");
+        cities.add("Pune");
+        cities.add("Chennai");
+        cities.add("Kochin");
+        cities.add("Trichi");
+        cities.add("Allopally");
+        cities.add("Mangalore");
+
+        // Sort the list of cities in ascending order
+        Collections.sort(cities);
+
+        // Print the sorted list of cities
+        System.out.println("Sorted list of cities:");
+        for (String city : cities) {
+            System.out.println(city);
+        }
+    }
+}
+
+Scenario – 4:
+Amit wants to take the franchise of Green Chilly Restaurant .
+He has to obey the following instructions.
+Create an abstract class
+abstract class greenrules{
+abstract int age();
+abstract void city();
+abstract void depositamount();
+
+}
+
+Int Age():
+The age must be accepted from user as int and must be within the range 20 to 32
+Otherwise : the user should get the message “You are not eligible to open the franchise”
+Void city( ):
+Accept the city you belongs to .
+Valid cities : Bhubaneswar , Cuttack , Puri
+People belongs to other cities will not get the franchise .
+dipositamount( ):
+To go ahead with the franchise application processing Amit has to deposit Rs 10,00000.00 to Green
+Chilly
+
+Solution
+=======
+package JavaTest;
+
+import java.util.Scanner;
+
+abstract class greenrules {
+    abstract int age();
+    abstract void city();
+    abstract void depositamount();
+}
+
+class AmitGreenChillyFranchise extends greenrules {
+    private int age;
+    private String city;
+    private double depositAmount;
+
+    @Override
+    public int age() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your age: ");
+        age = scanner.nextInt();
+        if (age < 20 || age > 32) {
+            System.out.println("You are not eligible to open the franchise");
+            System.exit(0);
+        }
+        return age;
+    }
+
+    @Override
+    public void city() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your city: ");
+        city = scanner.nextLine();
+        if (!city.equalsIgnoreCase("Bhubaneswar") && !city.equalsIgnoreCase("Cuttack") && !city.equalsIgnoreCase("Puri")) {
+            System.out.println("People belonging to other cities will not get the franchise");
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void depositamount() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the deposit amount (in Rs): ");
+        depositAmount = scanner.nextDouble();
+        if (depositAmount < 1000000.00) {
+            System.out.println("To go ahead with the franchise application processing, you need to deposit Rs 10,00,000.00 to Green Chilly");
+            System.exit(0);
+        }
+    }
+
+    public void printApplicationApprovalMessage() {
+        System.out.println("Application is approved for further processing");
+    }
+}
+
+public class GreenChillyFranchiseApplication {
+    public static void main(String[] args) {
+        AmitGreenChillyFranchise amit = new AmitGreenChillyFranchise();
+        amit.age();
+        amit.city();
+        amit.depositamount();
+        amit.printApplicationApprovalMessage();
+    }
+}
+
+
