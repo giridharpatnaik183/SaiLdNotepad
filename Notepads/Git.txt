@@ -15,3 +15,104 @@ git push -u origin main
 …or import code from another repository
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
 
+Rebasing, cherry-picking, and squashing are three Git commands that can be used to manipulate commit history.
+Rebasing: allows you to move or combine commits, and it can be used to create a linear commit history.
+Cherry-picking: allows you to select specific commits from one branch and apply them to another branch.
+Squashing: allows you to combine multiple commits into a single commit.
+
+
+
+---------------------------------------------------------
+Navigate to your Project Directory:
+Open a terminal (Command Prompt, PowerShell, or Git Bash) and navigate to the root directory of your project using the cd command.
+
+bash
+Copy code
+cd /path/to/your/project
+Initialize a Git Repository:
+If your project is not already a Git repository, you can initialize one.
+
+bash
+Copy code
+git init
+Add a Remote Repository (GitHub):
+Add your GitHub repository as the remote origin. Replace <your-username> and <your-repo> with your GitHub username and repository name.
+
+bash
+Copy code
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+Check the Status:
+Verify the status of your working directory. This helps you see the changes you've made.
+
+bash
+Copy code
+git status
+Create and Switch to 'main' Branch:
+If the 'main' branch doesn't exist, create and switch to it. If it already exists, just switch to it.
+
+bash
+Copy code
+git checkout -b main
+or
+
+bash
+Copy code
+git checkout main
+Add Changes and Commit:
+Stage the changes and commit them. Replace <your-message> with a meaningful commit message.
+
+bash
+Copy code
+git add .
+git commit -m "Your commit message"
+Push to GitHub:
+Push your changes to the 'main' branch on GitHub.
+
+bash
+Copy code
+git push -u origin main
+If you are prompted to enter your GitHub credentials, provide them.
+
+Change Default Branch on GitHub (Optional):
+Optionally, go to your GitHub repository settings on the web and change the default branch to 'main' for consistency.
+
+Navigate to your GitHub repository on the web.
+Go to "Settings" -> "Branches."
+In the "Default branch" section, choose 'main' from the dropdown menu.
+Click on the "Update" or "Save changes" button.
+
+
+steps to push a project folder to a specific branch (e.g., "test") on GitHub:
+============================================================================
+This worked for cloning private repo
+git clone https://ldtech-weighbridge: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@github.com/ldtech-weighbridge/Test.git
+
+https://github.com/ldtech-weighbridge/Test.git
+
+Username: ldtech-weighbridge
+key : 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
+
+git init
+git add .
+git commit -m "Initial commit"
+git branch test
+git checkout test
+git remote add origin https://github.com/ldtech-weighbridge/weigh_bridge.git
+git push -u origin test
+
+
+git remote set-url origin https://ldtech-weighbridge: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@github.com/ldtech-weighbridge/weigh_bridge.git
+
+
+
+# Switch to a branch other than the one you want to delete (e.g., main or master)
+git checkout main
+
+# Delete the local branch 'patch'
+git branch -D patch
+
+# Delete the remote branch 'patch'
+git push origin --delete patch
+
+
+ git remote add origin https://github.com/ldtech-weighbridge/weighbridge_folderstructure
